@@ -1,0 +1,26 @@
+.search-area {
+  width: 70vw;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+#search-button {
+  width: 100%;
+  height: 100%;
+}
+
+#data-area {
+  width: 70vw;
+}
+
+.footer-area {
+  height: 56px;
+}

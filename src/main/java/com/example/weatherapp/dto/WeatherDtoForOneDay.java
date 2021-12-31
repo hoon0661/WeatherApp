@@ -1,10 +1,11 @@
 package com.example.weatherapp.dto;
 
+import com.example.weatherapp.utils.TimeConverter;
 import lombok.Getter;
 import org.json.JSONObject;
 
 @Getter
-public class WeatherDto {
+public class WeatherDtoForOneDay {
     private String name;
     private String icon;
     private double temp;
@@ -15,8 +16,10 @@ public class WeatherDto {
     private int humidity;
     private double windSpeed;
     private int windDeg;
+    private String sunrise;
+    private String sunset;
 
-    public WeatherDto(JSONObject weatherJson) {
+    public WeatherDtoForOneDay(JSONObject weatherJson) {
         this.name = weatherJson.getString("name");
         this.icon = weatherJson.getJSONArray("weather").getJSONObject(0).getString("icon");
         this.temp = weatherJson.getJSONObject("main").getDouble("temp");
@@ -27,7 +30,8 @@ public class WeatherDto {
         this.humidity = weatherJson.getJSONObject("main").getInt("humidity");
         this.windSpeed = weatherJson.getJSONObject("wind").getDouble("speed");
         this.windDeg = weatherJson.getJSONObject("wind").getInt("deg");
-
+        this.sunrise = TimeConverter.covertUnixToHour(weatherJson.getJSONObject("sys").getInt("sunrise"));
+        this.sunset = TimeConverter.covertUnixToHour(weatherJson.getJSONObject("sys").getInt("sunset"));
     }
 }
 

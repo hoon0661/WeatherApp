@@ -7,6 +7,7 @@ import org.json.JSONObject;
 @Getter
 public class WeatherDtoForOneDay {
     private String name;
+    private String main;
     private String icon;
     private double temp;
     private double feelsLike;
@@ -16,11 +17,13 @@ public class WeatherDtoForOneDay {
     private int humidity;
     private double windSpeed;
     private int windDeg;
+    private String datetime;
     private String sunrise;
     private String sunset;
 
     public WeatherDtoForOneDay(JSONObject weatherJson) {
         this.name = weatherJson.getString("name");
+        this.main = weatherJson.getJSONArray("weather").getJSONObject(0).getString("main");
         this.icon = weatherJson.getJSONArray("weather").getJSONObject(0).getString("icon");
         this.temp = weatherJson.getJSONObject("main").getDouble("temp");
         this.feelsLike = weatherJson.getJSONObject("main").getDouble("feels_like");
@@ -30,6 +33,7 @@ public class WeatherDtoForOneDay {
         this.humidity = weatherJson.getJSONObject("main").getInt("humidity");
         this.windSpeed = weatherJson.getJSONObject("wind").getDouble("speed");
         this.windDeg = weatherJson.getJSONObject("wind").getInt("deg");
+        this.datetime = TimeConverter.covertUnixToHour(weatherJson.getInt("dt"));
         this.sunrise = TimeConverter.covertUnixToHour(weatherJson.getJSONObject("sys").getInt("sunrise"));
         this.sunset = TimeConverter.covertUnixToHour(weatherJson.getJSONObject("sys").getInt("sunset"));
     }

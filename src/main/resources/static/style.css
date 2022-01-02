@@ -17,6 +17,10 @@ input[type="number"] {
     height: 100%;
 }
 
+main {
+    margin-bottom: 70px;
+}
+
 #data-area {
     width: 70vw;
 }
@@ -38,6 +42,31 @@ input[type="number"] {
     width: fit-content;
 }
 
-.icon-font {
+.icon-github {
     font-size: 25px;
+}
+
+.icon-area {
+    position: relative;
+    top: -5px;
+}
+
+@media screen and (max-width: 48rem) {
+    .icon-github {
+        display: block;
+    }
+
+    .footer-area {
+        flex-direction: column;
+        position: relative;
+        top: 30px;
+    }
+
+    .icon-area {
+        position: static;
+    }
+
+    .footer-message {
+        text-align: center;
+    }
 }

@@ -1,6 +1,6 @@
 package com.example.weatherapp.dto;
 
-import com.example.weatherapp.utils.TimeConverter;
+import com.example.weatherapp.utils.TimeUtil;
 import lombok.Getter;
 import org.json.JSONObject;
 
@@ -33,9 +33,9 @@ public class WeatherDtoForOneDay {
         this.humidity = weatherJson.getJSONObject("main").getInt("humidity");
         this.windSpeed = weatherJson.getJSONObject("wind").getDouble("speed");
         this.windDeg = weatherJson.getJSONObject("wind").getInt("deg");
-        this.datetime = TimeConverter.covertUnixToHour(weatherJson.getInt("dt"));
-        this.sunrise = TimeConverter.covertUnixToHour(weatherJson.getJSONObject("sys").getInt("sunrise"));
-        this.sunset = TimeConverter.covertUnixToHour(weatherJson.getJSONObject("sys").getInt("sunset"));
+        this.datetime = TimeUtil.covertUnixToHour(weatherJson.getInt("dt"));
+        this.sunrise = TimeUtil.covertUnixToHour(weatherJson.getJSONObject("sys").getInt("sunrise"));
+        this.sunset = TimeUtil.covertUnixToHour(weatherJson.getJSONObject("sys").getInt("sunset"));
     }
 }
 

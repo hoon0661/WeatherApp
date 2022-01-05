@@ -1,6 +1,6 @@
 package com.example.weatherapp.dto;
 
-import com.example.weatherapp.utils.TimeConverter;
+import com.example.weatherapp.utils.TimeUtil;
 import lombok.Getter;
 import org.json.JSONObject;
 
@@ -26,7 +26,7 @@ public class WeatherDtoForFiveDays {
         this.tempMin = weatherJson.getJSONObject("main").getDouble("temp_min");
         this.tempMax = weatherJson.getJSONObject("main").getDouble("temp_max");
         this.windSpeed = weatherJson.getJSONObject("wind").getDouble("speed");
-        this.datetime = TimeConverter.covertUnixToDate(weatherJson.getInt("dt"));
+        this.datetime = TimeUtil.covertUnixToDate(weatherJson.getInt("dt"));
     }
 
 }

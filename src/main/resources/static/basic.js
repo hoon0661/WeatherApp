@@ -8,6 +8,18 @@ $(document).ready(function () {
     $("#dataset").css("display", "none");
 });
 
+function showCovidInfo() {
+    const query = $("#zipcode").val();
+
+    $.ajax({
+        type: "GET",
+        url: `/api/search/covid?query=${query}`,
+        success: function (response) {
+            
+        }
+    })
+}
+
 function showWeather() {
     const query = $("#zipcode").val();
     const unit = $("#unit option:selected").val();

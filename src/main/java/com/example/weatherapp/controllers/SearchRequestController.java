@@ -1,8 +1,6 @@
 package com.example.weatherapp.controllers;
 
-import com.example.weatherapp.dto.CovidInfoDto;
-import com.example.weatherapp.dto.WeatherDtoForFiveDays;
-import com.example.weatherapp.dto.WeatherDtoForOneDay;
+import com.example.weatherapp.dto.*;
 import com.example.weatherapp.utils.CovidDataSearch;
 import com.example.weatherapp.utils.OpenWeatherSearch;
 import lombok.RequiredArgsConstructor;
@@ -31,9 +29,21 @@ public class SearchRequestController {
         return openWeatherSearch.fromJSONtoWeatherForFiveDays(response);
     }
 
-    @GetMapping("api/search/covid")
-    public CovidInfoDto getCovidInfoToday(@RequestParam String query) {
-        String response = covidDataSearch.getCovidData();
-        return covidDataSearch.fromJSONtoCovidInfo(response, query);
+    @GetMapping("/api/search/covid/state")
+    public CovidInfoDtoForState getCovidInfoTodayForState(@RequestParam String query) {
+        String response = covidDataSearch.getCovidDataForState();
+        return covidDataSearch.fromJSONtoCovidInfoForState(response, query);
+    }
+
+    @GetMapping("/api/search/covid/national")
+    public CovidInfoDtoForNational getCovidInfoForNational() {
+        String response = covidDataSearch.getCovidDataForGlobal();
+        return covidDataSearch.fromJSONtoCovidInfoForNational(response);
+    }
+
+    @GetMapping("/api/search/covid/global")
+    public CovidInfoDtoForGlobal getCovidInfoForGlobal() {
+        String response = covidDataSearch.getCovidDataForGlobal();
+        return covidDataSearch.fromJSONtoCovidInfoForGlobal(response);
     }
 }

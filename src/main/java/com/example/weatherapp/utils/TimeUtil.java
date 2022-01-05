@@ -20,9 +20,9 @@ public class TimeUtil {
         return formatted;
     }
 
-    public static String generateISO() {
+    public static String generateISOForYesterday() {
         LocalDateTime yesterday = LocalDate.now().atStartOfDay().minusDays(1);
         return yesterday.toString() + ":00Z";
     }
-    
+
 }

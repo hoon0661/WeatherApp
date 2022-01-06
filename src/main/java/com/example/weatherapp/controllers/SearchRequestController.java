@@ -29,7 +29,7 @@ public class SearchRequestController {
         return openWeatherSearch.fromJSONtoWeatherForFiveDays(response);
     }
 
-    @GetMapping("/api/search/covid/state")
+    @GetMapping("/api/search/covid/states")
     public CovidInfoDtoForState getCovidInfoTodayForState(@RequestParam String query) {
         String response = covidDataSearch.getCovidDataForState();
         return covidDataSearch.fromJSONtoCovidInfoForState(response, query);

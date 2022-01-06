@@ -14,6 +14,7 @@ public class WeatherDtoForFiveDays {
     private double tempMin;
     private double tempMax;
     private double windSpeed;
+    private double humidity;
     private String datetime;
 
 
@@ -25,6 +26,7 @@ public class WeatherDtoForFiveDays {
         this.feelsLike = weatherJson.getJSONObject("main").getDouble("feels_like");
         this.tempMin = weatherJson.getJSONObject("main").getDouble("temp_min");
         this.tempMax = weatherJson.getJSONObject("main").getDouble("temp_max");
+        this.humidity = weatherJson.getJSONObject("main").getDouble("humidity");
         this.windSpeed = weatherJson.getJSONObject("wind").getDouble("speed");
         this.datetime = TimeUtil.covertUnixToDate(weatherJson.getInt("dt"));
     }

@@ -1,3 +1,6 @@
+let tempUnit;
+let windSpeed;
+
 $(document).ready(function () {
   $("#search-button").on("click", function () {
     showWeather();
@@ -44,6 +47,8 @@ function showCovidInfo() {
 function showWeather() {
   const query = $("#zipcode").val();
   const unit = $("#unit option:selected").val();
+  tempUnit = unit === "metric" ? "&#8451;" : "&#8457;";
+  windSpeed = unit === "metric" ? "m/s" : "mph";
 
   $.ajax({
     type: "GET",
@@ -83,20 +88,20 @@ function generateCardForToday(response) {
       <div class="col-md-6">
         <div class="card-body">
           <h5 class="card-title">
-            Today in <span id="today-name">${response.name}</span>
+            Today in <span>${response.name}</span>
           </h5>
           <p class="card-text">
-            Weather: <span id="today-temp" class="float-end">${response.main}</span>
+            Weather: <span class="float-end">${response.main}</span>
           </p>
           <p class="card-text">
-            Temperature: <span id="today-temp" class="float-end">${response.temp}</span>
+            Temperature: <span class="float-end">${response.temp}${tempUnit}</span>
           </p>
           <p class="card-text">
-            Humidity: <span id="today-humidity" class="float-end">${response.humidity}</span>
+            Humidity: <span class="float-end">${response.humidity}%</span>
           </p>
-          <p class="card-text">Wind: <span id="today-wind" class="float-end">${response.windSpeed}</span></p>
+          <p class="card-text">Wind: <span class="float-end">${response.windSpeed}${windSpeed}</span></p>
           <p class="card-text">
-            <small class="text-muted" id="date-time">Current Time: ${response.datetime}</small>
+            <small class="text-muted">Current Time: ${response.datetime}</small>
           </p>
         </div>
       </div>
@@ -116,14 +121,14 @@ function generateCardForFiveDays(response) {
         </div>
         <div class="card-body">
           <p class="card-text">
-            Temperature: <span id="today-temp" class="float-end">${response.temp}</span>
+            Temperature: <span class="float-end">${response.temp}${tempUnit}</span>
           </p>
           <p class="card-text">
-            Humidity: <span id="today-humidity" class="float-end">${response.humidity}</span>
+            Humidity: <span class="float-end">${response.humidity}%</span>
           </p>
-          <p class="card-text">Wind: <span id="today-wind" class="float-end">${response.windSpeed}</span></p>
+          <p class="card-text">Wind: <span class="float-end">${response.windSpeed}${windSpeed}</span></p>
           <p class="card-text">
-            <small class="text-muted" id="date-time">Date: ${response.datetime}</small>
+            <small class="text-muted">Date: ${response.datetime}</small>
           </p>
         </div>
     </div>
@@ -156,7 +161,7 @@ function generateCardForCovidForGlobal(response) {
                 Total Recovered: <span class="float-end">${response.totalRecovered}</span>
               </p>
               <p class="card-text">
-                <small class="text-muted" id="date-time">Date: ${response.date}</small>
+                <small class="text-muted">Date: ${response.date}</small>
               </p>
             </div>
           </div>

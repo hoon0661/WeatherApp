@@ -56,6 +56,22 @@ main {
   bottom: 14px;
 }
 
+.login-area {
+  margin-top: 150px;
+}
+
+.signup-area {
+  margin-top: 150px;
+}
+
+.login-form {
+  width: 25%;
+}
+
+.signup-form {
+  width: 25%;
+}
+
 @media screen and (max-width: 48rem) {
   .icon-github {
     display: block;
@@ -78,5 +94,25 @@ main {
   .date-state {
     position: static;
     bottom: auto;
+  }
+
+  .login-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .signup-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .login-form {
+    width: 75%;
+  }
+
+  .signup-form {
+    width: 75%;
   }
 }

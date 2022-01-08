@@ -10,6 +10,13 @@ $(document).ready(function () {
     }, 2000);
   });
 
+  $("#edit-link").on("click", function () {
+    $("#search-main").css("display", "none");
+    $("#dataset").css("display", "none");
+    $("#edit-area").css("display", "block");
+  });
+
+  $("#edit-area").css("display", "none");
   $("#dataset").css("display", "none");
 });
 

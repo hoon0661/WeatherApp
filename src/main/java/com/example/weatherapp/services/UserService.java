@@ -4,6 +4,7 @@ import com.example.weatherapp.dto.EditRequestDto;
 import com.example.weatherapp.dto.SignupRequestDto;
 import com.example.weatherapp.models.User;
 import com.example.weatherapp.repositories.UserRepository;
+import com.example.weatherapp.utils.UserInfoValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class UserService {
 
     public void registerUser(SignupRequestDto requestDto) {
         String username = requestDto.getUsername();
-
+        UserInfoValidator.validateUsername(username);
         Optional<User> found = userRepository.findByUsername(username);
 
         if (found.isPresent()) {
@@ -27,11 +28,12 @@ public class UserService {
         }
 
         String email = requestDto.getEmail();
+        UserInfoValidator.validateEmail(email);
         found = userRepository.findByEmail(email);
         if (found.isPresent()) {
             throw new IllegalArgumentException("Email already exists.");
         }
-
+        UserInfoValidator.validatePassword(requestDto.getPassword());
         String password = passwordEncoder.encode(requestDto.getPassword());
 
         User user = new User(username, password, email);
@@ -42,8 +44,10 @@ public class UserService {
     public void editUser(EditRequestDto requestDto) {
         Long userId = requestDto.getId();
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User does not exist."));
-        String password = passwordEncoder.encode(requestDto.getPassword());
         String email = requestDto.getEmail();
+        UserInfoValidator.validateEmail(email);
+        UserInfoValidator.validatePassword(requestDto.getPassword());
+        String password = passwordEncoder.encode(requestDto.getPassword());
         user.update(password, email);
     }
 }

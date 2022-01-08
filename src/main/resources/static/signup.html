@@ -18,11 +18,25 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"
+          ><i class="fas fa-rainbow me-1"></i>WEATHER APP</a
+        >
+      </div>
+    </nav>
     <main>
       <div class="signup-area">
         <div class="text-center mt-3 font-monospace mb-4 fs-5">
           Sign Up Form
         </div>
+
+        <div
+          id="signup-error"
+          th:if="${errorMessage != null}"
+          th:text="${errorMessage}"
+          class="alert alert-dark login-error mx-auto font-monospace"
+        ></div>
         <form
           class="signup-form mx-auto font-monospace"
           action="/user/signup"
@@ -35,6 +49,9 @@
               class="form-control"
               id="username-signup"
               name="username"
+              minlength="3"
+              placeholder="Username must be longer than 3 characters."
+              required
             />
           </div>
           <div class="mb-3">
@@ -44,6 +61,8 @@
               class="form-control"
               id="email-signup"
               name="email"
+              placeholder="ex) abc123@email.com"
+              required
             />
           </div>
           <div class="mb-3">
@@ -53,6 +72,9 @@
               class="form-control"
               id="password-signup"
               name="password"
+              minlength="4"
+              placeholder="Password must be longer than 4 characters."
+              required
             />
           </div>
           <button
@@ -68,7 +90,7 @@
             id="back-button"
             type="submit"
             class="btn btn-outline-dark w-100"
-            onclick="window.history.back()"
+            onclick="window.location.href='/'"
           >
             Cancel
           </button>

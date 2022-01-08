@@ -1,126 +1,111 @@
 .search-area {
-    width: 70vw;
+  width: 70vw;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 #search-button {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 main {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
 
 #data-area {
-    width: 70vw;
+  width: 70vw;
 }
 
 .footer-area {
-    height: 56px;
+  height: 56px;
 }
 
 #data-today .img-fluid {
-    height: 100px;
+  height: 100px;
 }
 
 #data-today .card {
-    background-color: rgba(0, 0, 0, 0.03);
-    border: none;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: none;
 }
 
 #data-fivedays .card-img-top {
-    width: fit-content;
+  width: fit-content;
 }
 
 .icon-github {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .icon-area {
-    position: relative;
-    top: -5px;
+  position: relative;
+  top: -5px;
 }
 
 .date-state {
-    position: absolute;
-    bottom: 14px;
+  position: absolute;
+  bottom: 14px;
 }
 
-.login-area {
-    margin-top: 150px;
+.login-area,
+.signup-area,
+#edit-area {
+  margin-top: 150px;
 }
 
-.signup-area {
-    margin-top: 150px;
-}
-
-.edit-area {
-    margin-top: 150px;
-}
-
-.login-form {
-    width: 25%;
-}
-
-.signup-form {
-    width: 25%;
+.login-form,
+.signup-form,
+.login-error {
+  width: 25%;
 }
 
 .id-display {
-    display: none;
+  display: none;
 }
 
 @media screen and (max-width: 48rem) {
-    .icon-github {
-        display: block;
-    }
+  .icon-github {
+    display: block;
+  }
 
-    .footer-area {
-        flex-direction: column;
-        position: relative;
-        top: 30px;
-    }
+  .footer-area {
+    flex-direction: column;
+    position: relative;
+    top: 30px;
+  }
 
-    .icon-area {
-        position: static;
-    }
+  .icon-area {
+    position: static;
+  }
 
-    .footer-message {
-        text-align: center;
-    }
+  .footer-message {
+    text-align: center;
+  }
 
-    .date-state {
-        position: static;
-        bottom: auto;
-    }
+  .date-state {
+    position: static;
+    bottom: auto;
+  }
 
-    .login-area {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+  .login-area,
+  .signup-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    .signup-area {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .login-form {
-        width: 75%;
-    }
-
-    .signup-form {
-        width: 75%;
-    }
+  .login-form,
+  .signup-form,
+  .login-error {
+    width: 75%;
+  }
 }

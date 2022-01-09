@@ -1,5 +1,5 @@
 # WeatherApp
-This project is to learn & utilize Spring Security as well as frontend technologies including HTML5, CSS, Javascript to develop a fullstack application with respoinsive UI using Bootstrap.
+This project is to learn & utilize Spring Security as well as frontend technologies including HTML5, CSS, Javascript to develop a fullstack application with responsive UI using Bootstrap.
  
 
 ## Technology Used

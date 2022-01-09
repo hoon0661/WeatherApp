@@ -94,10 +94,14 @@ This project is to learn & utilize Spring Security as well as frontend technolog
 | `email`      | `String` | must include @ |
 | `password`      | `String` | not less than 4 characters |
 
+## To Improve
+- Handle Exceptions coming from user input validation on client side
+
 ## Lesson Learned
 - Requests to endpoints can be configured for auth using WebsecurityConfigurerAdabter, and it can even configure security for others such as html, css, and even h2 database.
 - For password, BcryptPasswordEncoder is used, and it is for one-way encryption. In other words, it can encode raw password but cannot decode it.
 - @Controller and Thymeleaf are used to provide dynamic web pages.
-- Exception handling was not easy for me (blame my coding skills :(....) on this project especially when validating user input and handling exceptions from server side on client side. Thymeleaf is used but it was a bit complicated step for me.
+- Exception handling was not easy for me (blame on my coding skills :(....) on this project especially when validating user input and handling exceptions from server side on client side. Thymeleaf is used but it was a bit complicated step for me.
 - Maybe creating a SPA using a framework such as REACT can be solution...? Making all requests in REST (instead of returning HTML pages) makes more sense to me and seems easier for exception handling. 
 - Bootstrap5 was magic to me. I didn't have to write much css code to create UI. Initially the UI got broken in smaller screensize but media query was really helpful to solve the issue.
+

@@ -102,6 +102,7 @@ This project is to learn & utilize Spring Security as well as frontend technolog
 - For password, BcryptPasswordEncoder is used, and it is for one-way encryption. In other words, it can encode raw password but cannot decode it.
 - @Controller and Thymeleaf are used to provide dynamic web pages.
 - Exception handling was not easy for me (blame on my coding skills :(....) on this project especially when validating user input and handling exceptions from server side on client side. Thymeleaf is used but it was a bit complicated step for me.
-- Maybe creating a SPA using a framework such as REACT can be solution...? Making all requests in REST (instead of returning HTML pages) makes more sense to me and seems easier for exception handling. 
+- Making all requests in REST and using a tool such as ajax (instead of returning multiple HTML pages with errors) makes more sense to me and seems easier for exception handling. 
+- Returning multiple HTML pages (using @Controller and Thymeleaf) seems too redundant. Maybe creating a SPA using a framework such as REACT could be a solution. 
 - Bootstrap5 was magic to me. I didn't have to write much css code to create UI. Initially the UI got broken in smaller screensize but media query was really helpful to solve the issue.
 

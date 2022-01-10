@@ -33,6 +33,9 @@ This project is to learn & utilize Spring Security as well as frontend technolog
 - APIs used: Weather data(https://openweathermap.org/api), COVID-19 data(https://documenter.getpostman.com/view/10808728/SzS8rjbc).
 - WeatherApp Address: http://weatherapp.hoonkim.link/
 
+## Updates
+- Added scheduler to reset public username and password (username: username, password: password) everyhour.
+
 ## API Reference
 
 - Please use this as a prefix for all API endpoints

@@ -28,7 +28,7 @@ develop a fullstack application with responsive UI using Bootstrap.
 - A couple of third-party APIs have been used in the backend to provide weather information and COVID-19 data.
 - User can view today's weather info, 5 days forecast
 - User can view COVID-19 data in US state level, US national level and global level.
-- this web app has a responsive UI using Bootstrap.
+- This web app has a responsive UI using Bootstrap.
 - This app has been deployed using AWS RDS and EC2.
 - APIs used: Weather data(https://openweathermap.org/api), COVID-19
   data(https://documenter.getpostman.com/view/10808728/SzS8rjbc).

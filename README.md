@@ -73,8 +73,8 @@ Required**. Temperature unit. can be either "metric" for Celsius or "imperial" f
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `query`      | `String` | **Required**. 5 digits US Zipcode. |
-| `unit`      | `String` | **
-Required**. Temperature unit. can be either "metric" for Celsius or "imperial" for Fahrenheit |
+| `unit`      | `String` | **Required**. Temperature unit. can be either "metric" for Celsius or "imperial" for Fahrenheit |
+
 
 #### Get a live case in US state level
 

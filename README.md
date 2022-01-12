@@ -29,14 +29,14 @@ develop a fullstack application with responsive UI using Bootstrap.
 - User can view today's weather info, 5 days forecast
 - User can view COVID-19 data in US state level, US national level and global level.
 - this web app has a responsive UI using Bootstrap.
-- This server has been deployed using AWS RDS and EC2.
+- This app has been deployed using AWS RDS and EC2.
 - APIs used: Weather data(https://openweathermap.org/api), COVID-19
   data(https://documenter.getpostman.com/view/10808728/SzS8rjbc).
 - WeatherApp Address: http://weatherapp.hoonkim.link/
 
 ## Updates
 
-- Added scheduler to reset public username and password (username: username, password: password) everyhour.
+- Added scheduler to reset public username and password (username: username, password: password) every hour.
 - Added exception handler to handle error when fetching data from APIs.
 - Added loading spinner to display while fetching data.
 

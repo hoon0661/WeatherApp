@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @PostMapping("/user/edit")
-    public String editUser(EditRequestDto requestDto, Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public String editUser(@RequestBody EditRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         userService.editUser(requestDto);
         return "redirect:/";
     }

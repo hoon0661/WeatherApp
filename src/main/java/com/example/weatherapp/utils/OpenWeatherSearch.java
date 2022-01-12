@@ -29,7 +29,6 @@ public class OpenWeatherSearch {
         responseEntity = rest.exchange("http://api.openweathermap.org/data/2.5/weather?zip=" + query + "&units=" + unit + "&appid=" + Config.OPEN_WEATHER_KEY, HttpMethod.GET, requestEntity, String.class);
         HttpStatus httpStatus = responseEntity.getStatusCode();
         int status = httpStatus.value();
-        System.out.println(status);
         String response = responseEntity.getBody();
         return response;
     }

@@ -19,7 +19,12 @@ $(document).ready(function () {
     }, 2000);
   });
 
+  $("#edit-button").on("click", function () {
+    editUserInfo();
+  });
+
   $("#edit-link").on("click", function () {
+    $("#errorMessage-edit").hide();
     $("#search-main").hide();
     $("#dataset").hide();
     $("#edit-area").show();
@@ -29,7 +34,34 @@ $(document).ready(function () {
   $("#edit-area").hide();
   $("#dataset").hide();
   $("#errorMessage").hide();
+  $("#errorMessage-edit").hide();
 });
+
+function editUserInfo() {
+  const id = $("#userid-edit").val();
+  const username = $("#username-edit").val();
+  const email = $("#email-edit").val();
+  const password = $("#password-edit").val();
+  const data = { id, username, email, password };
+  $.ajax({
+    type: "POST",
+    url: `/user/edit`,
+    contentType: "application/json",
+    data: JSON.stringify(data),
+    success: function (response) {
+      console.log("success");
+      window.location.reload();
+    },
+    error: function (response) {
+      if (response.responseJSON && response.responseJSON.message) {
+        $("#errorMessage-edit").text(response.responseJSON.message);
+      } else {
+        $("#errorMessage-edit").text("Unknown Error Occurred.");
+      }
+      $("#errorMessage-edit").show();
+    },
+  });
+}
 
 function showData() {
   const query = $("#zipcode").val();

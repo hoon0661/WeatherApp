@@ -133,11 +133,12 @@
 
       <div id="edit-area">
         <div class="text-center mt-3 font-monospace mb-4 fs-5">Edit Info</div>
-        <form
-          class="signup-form mx-auto font-monospace"
-          action="/user/edit"
-          method="post"
-        >
+        <div
+          id="errorMessage-edit"
+          class="alert alert-dark login-error mx-auto font-monospace"
+          role="alert"
+        ></div>
+        <div id="edit-form" class="signup-form mx-auto font-monospace">
           <div class="mb-3 id-display">
             <label for="userid-edit" class="form-label">Username</label>
             <input type="text" name="id" id="userid-edit" th:value="${id}" />
@@ -150,7 +151,6 @@
               id="username-edit"
               name="username"
               th:value="${username}"
-              required
               disabled
             />
           </div>
@@ -163,7 +163,6 @@
               th:value="${email}"
               name="email"
               placeholder="ex) abc123@email.com"
-              required
             />
           </div>
           <div class="mb-3">
@@ -175,7 +174,6 @@
               name="password"
               minlength="4"
               placeholder="Password must be longer than 4 characters."
-              required
             />
           </div>
           <button
@@ -185,7 +183,7 @@
           >
             Submit
           </button>
-        </form>
+        </div>
 
         <div class="signup-form mt-4 mx-auto font-monospace">
           <button

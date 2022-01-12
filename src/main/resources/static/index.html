@@ -55,7 +55,11 @@
         </div>
       </div>
     </nav>
-
+    <div id="loading-spinner">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <main>
       <div class="container-fluid" id="search-main">
         <div>
@@ -76,8 +80,8 @@
                 type="number"
                 class="form-control"
                 id="zipcode"
-                placeholder="10011"
                 value="zipcode"
+                required
               />
               <label for="zipcode">Your Zipcode</label>
             </div>
@@ -97,6 +101,11 @@
             </button>
           </div>
         </div>
+        <div
+          id="errorMessage"
+          class="alert alert-dark font-monospace mt-3 text-center mx-auto"
+          role="alert"
+        ></div>
       </div>
 
       <div class="container" id="dataset">

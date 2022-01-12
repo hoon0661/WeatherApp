@@ -2,10 +2,13 @@ package com.example.weatherapp.controllers;
 
 import com.example.weatherapp.dto.EditRequestDto;
 import com.example.weatherapp.dto.SignupRequestDto;
+import com.example.weatherapp.exception.ApiException;
 import com.example.weatherapp.models.User;
 import com.example.weatherapp.security.UserDetailsImpl;
 import com.example.weatherapp.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -3,6 +3,7 @@ package com.example.weatherapp.utils;
 import com.example.weatherapp.dto.CovidInfoDtoForGlobal;
 import com.example.weatherapp.dto.CovidInfoDtoForNational;
 import com.example.weatherapp.dto.CovidInfoDtoForState;
+import com.example.weatherapp.exception.ApiRequestException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.*;
@@ -25,9 +26,12 @@ public class CovidDataSearch {
         return response;
     }
 
-    public CovidInfoDtoForState fromJSONtoCovidInfoForState(String result, String zipcode) {
+    public CovidInfoDtoForState fromJSONtoCovidInfoForState(String result, String query) {
+        if (query == null || query.trim().length() != 5) {
+            throw new ApiRequestException("Please type 5-digit zipcode (ex: 10118).");
+        }
         JSONArray array = new JSONArray(result);
-        String state = ZipcodeStateMapper.getState(zipcode);
+        String state = ZipcodeStateMapper.getState(query);
         for (int i = 0; i < array.length(); i++) {
             JSONObject obj = array.getJSONObject(i);
             if (obj.getString("Province").equals(state)) {

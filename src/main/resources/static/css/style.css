@@ -1,4 +1,5 @@
-.search-area {
+.search-area,
+#errorMessage {
   width: 70vw;
 }
 
@@ -70,6 +71,12 @@ main {
 
 .id-display {
   display: none;
+}
+
+#loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 @media screen and (max-width: 48rem) {

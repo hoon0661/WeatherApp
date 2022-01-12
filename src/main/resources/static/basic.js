@@ -1,57 +1,37 @@
 let tempUnit;
 let windSpeed;
-
+let hasError = false;
 $(document).ready(function () {
   $("#search-button").on("click", function () {
-    showWeather();
-    showCovidInfo();
+    $("#loading-spinner").show();
+    const query = $("#zipcode").val();
+    const length = query.length;
+    showData();
     setTimeout(function () {
-      $("#dataset").css("display", "block");
+      $("#loading-spinner").hide();
+      if (hasError) {
+        $("#dataset").hide();
+        $("#errorMessage").show();
+      } else {
+        $("#dataset").show();
+        $("#errorMessage").hide();
+      }
     }, 2000);
   });
 
   $("#edit-link").on("click", function () {
-    $("#search-main").css("display", "none");
-    $("#dataset").css("display", "none");
-    $("#edit-area").css("display", "block");
+    $("#search-main").hide();
+    $("#dataset").hide();
+    $("#edit-area").show();
   });
 
-  $("#edit-area").css("display", "none");
-  $("#dataset").css("display", "none");
+  $("#loading-spinner").hide();
+  $("#edit-area").hide();
+  $("#dataset").hide();
+  $("#errorMessage").hide();
 });
 
-function showCovidInfo() {
-  const query = $("#zipcode").val();
-  $("#data-covid").empty();
-  $.ajax({
-    type: "GET",
-    url: `/api/search/covid/global`,
-    success: function (response) {
-      const tempHtml = generateCardForCovidForGlobal(response);
-      $("#data-covid").append(tempHtml);
-    },
-  });
-
-  $.ajax({
-    type: "GET",
-    url: `/api/search/covid/national`,
-    success: function (response) {
-      const tempHtml = generateCardForCovidForNational(response);
-      $("#data-covid").append(tempHtml);
-    },
-  });
-
-  $.ajax({
-    type: "GET",
-    url: `/api/search/covid/states?query=${query}`,
-    success: function (response) {
-      const tempHtml = generateCardForCovidForState(response);
-      $("#data-covid").append(tempHtml);
-    },
-  });
-}
-
-function showWeather() {
+function showData() {
   const query = $("#zipcode").val();
   const unit = $("#unit option:selected").val();
   tempUnit = unit === "metric" ? "&#8451;" : "&#8457;";
@@ -61,20 +41,111 @@ function showWeather() {
     type: "GET",
     url: `/api/search/oneday?query=${query}&unit=${unit}`,
     success: function (response) {
+      hasError = false;
       $("#data-today").empty();
       const card = generateCardForToday(response);
       $("#data-today").append(card);
+      showFiveDaysWeather();
+    },
+    error: function (response) {
+      hasError = true;
+      if (response.responseJSON && response.responseJSON.message) {
+        $("#errorMessage").text(response.responseJSON.message);
+      } else {
+        $("#errorMessage").text("Unknown Error Occurred.");
+      }
     },
   });
+}
+
+function showFiveDaysWeather() {
+  const query = $("#zipcode").val();
+  const unit = $("#unit option:selected").val();
+  tempUnit = unit === "metric" ? "&#8451;" : "&#8457;";
+  windSpeed = unit === "metric" ? "m/s" : "mph";
 
   $.ajax({
     type: "GET",
     url: `/api/search/fivedays?query=${query}&unit=${unit}`,
     success: function (response) {
+      hasError = false;
       $("#data-fivedays").empty();
       for (let i = 0; i < response.length; i++) {
         let card = generateCardForFiveDays(response[i]);
         $("#data-fivedays").append(card);
+      }
+      showCovidForGlobal();
+    },
+    error: function (response) {
+      hasError = true;
+      if (response.responseJSON && response.responseJSON.message) {
+        $("#errorMessage").text(response.responseJSON.message);
+      } else {
+        $("#errorMessage").text("Unknown Error Occurred.");
+      }
+    },
+  });
+}
+
+function showCovidForGlobal() {
+  $("#data-covid").empty();
+  $.ajax({
+    type: "GET",
+    url: `/api/search/covid/global`,
+    success: function (response) {
+      hasError = false;
+      const tempHtml = generateCardForCovidForGlobal(response);
+      $("#data-covid").append(tempHtml);
+      showCovidForNational();
+    },
+    error: function (response) {
+      hasError = true;
+      if (response.responseJSON && response.responseJSON.message) {
+        $("#errorMessage").text(response.responseJSON.message);
+      } else {
+        $("#errorMessage").text("Unknown Error Occurred.");
+      }
+    },
+  });
+}
+
+function showCovidForNational() {
+  $.ajax({
+    type: "GET",
+    url: `/api/search/covid/national`,
+    success: function (response) {
+      hasError = false;
+      const tempHtml = generateCardForCovidForNational(response);
+      $("#data-covid").append(tempHtml);
+      showCovidForState();
+    },
+    error: function (response) {
+      hasError = true;
+      if (response.responseJSON && response.responseJSON.message) {
+        $("#errorMessage").text(response.responseJSON.message);
+      } else {
+        $("#errorMessage").text("Unknown Error Occurred.");
+      }
+    },
+  });
+}
+
+function showCovidForState() {
+  const query = $("#zipcode").val();
+  $.ajax({
+    type: "GET",
+    url: `/api/search/covid/states?query=${query}`,
+    success: function (response) {
+      hasError = false;
+      const tempHtml = generateCardForCovidForState(response);
+      $("#data-covid").append(tempHtml);
+    },
+    error: function (response) {
+      hasError = true;
+      if (response.responseJSON && response.responseJSON.message) {
+        $("#errorMessage").text(response.responseJSON.message);
+      } else {
+        $("#errorMessage").text("Unknown Error Occurred.");
       }
     },
   });

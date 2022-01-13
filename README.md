@@ -1,7 +1,8 @@
 # WeatherApp
 
 This project is to learn & utilize Spring Security as well as frontend technologies including HTML5, CSS, Javascript to
-develop a fullstack application with responsive UI using Bootstrap.
+develop a fullstack application with responsive UI using Bootstrap. This app is for users in the US. Some
+functionalities may not work for users who live outside the US.
 
 ## Technology Used
 
@@ -31,7 +32,7 @@ develop a fullstack application with responsive UI using Bootstrap.
 - This web app has a responsive UI using Bootstrap.
 - This app has been deployed using AWS RDS and EC2.
 - APIs used: Weather data(https://openweathermap.org/api), COVID-19
-  data(https://documenter.getpostman.com/view/10808728/SzS8rjbc).
+  data(https://documenter.getpostman.com/view/10808728/SzS8rjbc), HTML Geolocation API, GoogleMap API
 - WeatherApp Address: http://weatherapp.hoonkim.link/
 
 ## Updates
@@ -39,6 +40,8 @@ develop a fullstack application with responsive UI using Bootstrap.
 - Added scheduler to reset public username and password (username: username, password: password) every hour.
 - Added exception handler to handle error when fetching data from APIs.
 - Added loading spinner to display while fetching data.
+- Added HTML Geolocation API & GoogleMap API to retrieve user's zipcode upon user's permission, and display
+  weather/COVID-19 info on page load.
 
 ## API Reference
 
@@ -73,8 +76,8 @@ Required**. Temperature unit. can be either "metric" for Celsius or "imperial" f
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `query`      | `String` | **Required**. 5 digits US Zipcode. |
-| `unit`      | `String` | **Required**. Temperature unit. can be either "metric" for Celsius or "imperial" for Fahrenheit |
-
+| `unit`      | `String` | **
+Required**. Temperature unit. can be either "metric" for Celsius or "imperial" for Fahrenheit |
 
 #### Get a live case in US state level
 

@@ -26,7 +26,7 @@ functionalities may not work for users who live outside the US.
 ## Features
 
 - User can sign up/login and edit user info.
-- A couple of third-party APIs have been used in the backend to provide weather information and COVID-19 data.
+- A few third-party APIs have been used in the backend to provide weather information and COVID-19 data.
 - User can view today's weather info, 5 days forecast
 - User can view COVID-19 data in US state level, US national level and global level.
 - This web app has a responsive UI using Bootstrap.
@@ -34,13 +34,15 @@ functionalities may not work for users who live outside the US.
 - APIs used: Weather data(https://openweathermap.org/api), COVID-19
   data(https://documenter.getpostman.com/view/10808728/SzS8rjbc), HTML Geolocation API, GoogleMap API
 - WeatherApp Address: http://weatherapp.hoonkim.link/
+- Try out the app using this account: Username: username, Password: password
+- Feel free to edit the account above(the account is resetted every hour).
 
 ## Updates
 
 - Added scheduler to reset public username and password (username: username, password: password) every hour.
 - Added exception handler to handle error when fetching data from APIs.
 - Added loading spinner to display while fetching data.
-- Added HTML Geolocation API & GoogleMap API to retrieve user's zipcode upon user's permission, and display
+- Added HTML Geolocation API & GoogleMap API to retrieve user's zipcode upon their permission, and display
   weather/COVID-19 info on page load.
 
 ## API Reference

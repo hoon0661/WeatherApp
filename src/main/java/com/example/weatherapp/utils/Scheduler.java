@@ -16,7 +16,7 @@ public class Scheduler {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 0 * * * *")
     @Transactional
     public void keepBasicUser() throws InterruptedException {
         User user = userRepository.findByUsername("username").orElseThrow(() -> new IllegalArgumentException("username does not exist."));

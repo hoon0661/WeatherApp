@@ -40,7 +40,8 @@ $(document).ready(function () {
         }, 2000);
     });
 
-    $("#edit-button").on("click", function () {
+    $("#edit-button").on("click", function (event) {
+        event.preventDefault();
         editUserInfo();
     });
 

@@ -80,7 +80,6 @@
                             type="number"
                             class="form-control"
                             id="zipcode"
-                            value="zipcode"
                             required
                     />
                     <label for="zipcode">Your Zipcode</label>
@@ -138,7 +137,7 @@
                 class="alert alert-dark login-error mx-auto font-monospace"
                 role="alert"
         ></div>
-        <div id="edit-form" class="signup-form mx-auto font-monospace">
+        <form id="edit-form" class="signup-form mx-auto font-monospace">
             <div class="mb-3 id-display">
                 <label for="userid-edit" class="form-label">Username</label>
                 <input type="text" name="id" id="userid-edit" th:value="${id}"/>
@@ -183,7 +182,7 @@
             >
                 Submit
             </button>
-        </div>
+        </form>
 
         <div class="signup-form mt-4 mx-auto font-monospace">
             <button
